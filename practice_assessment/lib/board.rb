@@ -47,8 +47,18 @@ class Board
         return false
     end
 
+    # def vertical_winner?(token)
+    #     @stacks.any? {|stack| is_it_gucci(stack, token)}
+    # end
+
     def vertical_winner?(token)
-        @stacks.any? {|stack| is_it_gucci(stack, token)}
+        @stacks.any? do |stack|
+            if stack.length == max_height && stack.all? {|ele| ele == token}
+                return true
+            end
+
+        end
+        return false
     end
 
     def winner?(token)
@@ -59,7 +69,7 @@ class Board
         end
     end
 
-    def is_it_gucci(array, token)
-        array.all? {|ele| ele == token}
-    end
+    # def is_it_gucci(array, token)
+    #     array.all? {|ele| ele == token}
+    # end
 end
